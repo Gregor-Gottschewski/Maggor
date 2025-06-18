@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+    <f:metadata>
+        <f:viewAction action="#{storiesBean.loadStories}"/>
+    </f:metadata>
+
+    <h:head>
+        <title>Maggor - Stories</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+
+    <h:body>
+        <div class="card">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h1>Unsere Momente</h1>
+                <p class="underline">So viel schönen Unsinn, den wir erleben...</p>
+            </div>
+
+            <h:form>
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton value="Zurück zu unseren Kapiteln" action="#{storiesBean.backToTopics}"
+                                         icon="pi pi-arrow-left"/>
+                    </p:toolbarGroup>
+                    <p:toolbarGroup align="right">
+                        <p:commandButton value="Abmelden" action="#{loginBean.logout}" icon="pi pi-sign-out"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+
+            <p:panel header="Momente aus '#{topicsBean.selectedTopic.name}'" styleClass="mt-3">
+                <p:messages id="messages" showDetail="false" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-8">
+                        <h:form id="storiesTableForm">
+                            <p:dataTable id="storiesTable" var="story" value="#{storiesBean.stories}"
+                                         emptyMessage="Huch... ganz schön leer hier. Lass uns das ändern (^^)"
+                                         stickyHeader="true" stripedRows="true" allowUnsorting="true"
+                                         sortMode="single" scrollable="true" scrollWidth="100%">
+                                <p:column headerText="Titel" sortBy="#{story.title}" filterBy="#{story.title}">
+                                    <h:outputText value="#{story.title}" style="font-weight: bold;"/>
+                                </p:column>
+                                <p:column headerText="Beschreibung">
+                                    <h:outputText value="#{story.body}" style="color: #555;"/>
+                                </p:column>
+                                <p:column headerText="Datum" sortBy="#{story.date}" width="180px">
+                                    <h:outputText value="#{story.date}" style="color: #555;"/>
+                                </p:column>
+                                <p:column headerText="Rating" sortBy="#{story.rating}" width="180px">
+                                    <p:rating readonly="true" value="#{story.rating}"/>
+                                </p:column>
+                                <p:column headerText="Aktionen" style="width:120px;text-align:center">
+                                    <div class="datatable-action-buttons">
+                                        <p:commandButton icon="pi pi-trash" title="Story Löschen"
+                                                         action="#{storiesBean.deleteStory(story)}"
+                                                         update=":storiesTableForm messages"
+                                                         styleClass="ui-button-danger"
+                                                         onclick="return confirm('Möchtest du diesen Moment wirklich löschen?')"/>
+                                        <p:commandButton icon="pi pi-eye" title="Story genauer anschauen"
+                                                         action="#{storiesBean.setSelectedStory(story)}"
+                                                         oncomplete="PF('storyDetailsDialog').show()"
+                                                         update=":storyDetailsForm messages"
+                                                         styleClass="ui-button-success"/>
+                                    </div>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+
+                    <h:form id="storyDetailsForm">
+                        <p:dialog header="Moment: #{storiesBean.selectedStory.title}" widgetVar="storyDetailsDialog"
+                                  modal="true"
+                                  resizable="false" appendTo="@(body)" closeOnEscape="true" draggable="false">
+
+                            <h:panelGrid id="storyDetailsPanel" columns="2" cellpadding="5">
+                                <p:outputLabel for="storyDetailsPanelStoryBody" value="Beschreibung:"
+                                               style="color: #548bff; font-weight: bold;"/>
+                                <h:outputText id="storyDetailsPanelStoryBody" value="#{storiesBean.selectedStory.body}"
+                                              escape="false" style="color: #555;"/>
+
+                                <p:outputLabel for="storyDetailsPanelStoryDate" value="Datum:"
+                                               style="color: #548bff; font-weight: bold;"/>
+                                <h:outputText id="storyDetailsPanelStoryDate"
+                                              value="#{storiesBean.selectedStory.date}" style="color: #555;"/>
+
+                                <p:outputLabel for="storyDetailsPanelStoryRating" value="Rating:"
+                                               style="color: #548bff; font-weight: bold;"/>
+                                <p:rating id="storyDetailsPanelStoryRating"
+                                          value="#{storiesBean.selectedStory.rating}" readonly="true"/>
+                            </h:panelGrid>
+                            <p:commandButton value="Close" onclick="PF('storyDetailsDialog').hide()" type="button"
+                                             styleClass="ui-button-secondary" icon="pi pi-times"/>
+                        </p:dialog>
+                    </h:form>
+
+                    <div class="p-col-12 p-md-4">
+                        <h:form id="storyCreationForm">
+                            <p:panel header="Einen neuen Moment erschaffen">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:outputLabel for="storyTitle" value="Titel:"/>
+                                    <p:inputText id="storyTitle" value="#{storiesBean.newStory.title}" required="true"
+                                                 requiredMessage="Bitte gebe dem Moment einen einzigartigen Titel"
+                                                 placeholder="Name des Moments"/>
+
+                                    <p:outputLabel for="storyBody" value="Beschreibung:"/>
+                                    <p:inputTextarea id="storyBody" value="#{storiesBean.newStory.body}" required="true"
+                                                     requiredMessage="Bitte beschreibe diesen Moment" rows="5"
+                                                     placeholder="Beschreibe diesen Moment..."/>
+
+                                    <p:outputLabel for="storyCreationStoryDate" value="Datum:"/>
+                                    <p:datePicker id="storyCreationStoryDate"
+                                                  value="#{storiesBean.newStory.date}" required="true"
+                                                  requiredMessage="Bitte setze das Datum des Moments"
+                                                  placeholder="Wann war der Moment?"/>
+
+                                    <p:outputLabel for="storyCreationStoryRating" value="Rating:"/>
+                                    <p:rating id="storyCreationStoryRating"
+                                              value="#{storiesBean.newStory.rating}"/>
+
+                                    <p:commandButton value="Moment speichern" action="#{storiesBean.createStory}"
+                                                     update=":storiesTableForm :storyCreationForm" icon="pi pi-heart"/>
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:form>
+                    </div>
+                </div>
+            </p:panel>
+        </div>
+    </h:body>
+
+</f:view>
+
+</html>

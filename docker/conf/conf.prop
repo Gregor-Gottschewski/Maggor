@@ -1,0 +1,12 @@
+user.password=<secure_user_password>
+
+# UI
+login.title=Here is the title
+login.subtitle=Here is your cubtitle
+login.footer=Here is your footer
+
+# database
+db.name=mongo
+db.port=27017
+db.root.username=maggor
+db.root.password=<secure_db_password>

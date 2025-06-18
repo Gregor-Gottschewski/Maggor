@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="maggor-docker">
+    <output-path>$PROJECT_DIR$/docker</output-path>
+    <root id="archive" name="maggor-0.0.1.war">
+      <element id="artifact" artifact-name="maggor:war exploded" />
+    </root>
+  </artifact>
+</component>

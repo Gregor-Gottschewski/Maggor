@@ -1,0 +1,217 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #a0befa;
+    margin: 0;
+    padding: 20px;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIzNXB4IiBoZWlnaHQ9IjM1cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBjb2xvcj0iI2ZmZDhmZCIgc3Ryb2tlLXdpZHRoPSIxLjUiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuOTk5OSAzLjk0MjI4QzEzLjE3NTcgMi44NTg3MiAxNC43MDY5IDIuMjUgMTYuMzA1MyAyLjI1QzE4LjAzMTMgMi4yNSAxOS42NzkgMi45NTk3NyAyMC44ODU0IDQuMjEwNzRDMjIuMDgzMiA1LjQ1MTgxIDIyLjc1IDcuMTI0OCAyMi43NSA4Ljg2MjIyQzIyLjc1IDEwLjU5OTcgMjIuMDgzMSAxMi4yNzI4IDIwLjg4NTQgMTMuNTEzN0MyMC4wODkgMTQuMzM5MyAxOS4yOTM4IDE1LjE4MzYgMTguNDk0NSAxNi4wMzIzQzE2Ljg3MSAxNy43NTYyIDE1LjIzMDEgMTkuNDk4NSAxMy41MjU2IDIxLjE0TDEzLjUyMTYgMjEuMTQzOEMxMi42NDI2IDIxLjk3NzkgMTEuMjUwNSAyMS45NDc2IDEwLjQwOSAyMS4wNzU0TDMuMTEzOTkgMTMuNTEzNkMwLjYyODY3IDEwLjkzNzQgMC42Mjg2NyA2Ljc4NzA3IDMuMTEzOTkgNC4yMTA4NUM1LjU0NjA1IDEuNjg5ODQgOS40NjIzOSAxLjYwMDMyIDExLjk5OTkgMy45NDIyOFoiIGZpbGw9IiNmZmQ4ZmQiPjwvcGF0aD48L3N2Zz4=');
+    background-repeat: repeat;
+    background-size: 50px 50px;
+}
+
+.card {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 24, 77, 0.4);
+    padding: 20px;
+}
+
+h1 {
+    color: #a0befa;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.underline {
+    color: #a0befa;
+    font-style: italic;
+}
+
+/* Login and Register Pages */
+.login-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 24, 77, 0.3);
+    padding: 30px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-subtitle {
+    color: #a0befa;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.login-icon {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-top: 10px;
+}
+
+.login-grid {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 20px !important;
+}
+
+.login-footer {
+    text-align: center;
+    color: #db7093;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* Topics and Stories Pages */
+.welcome-text {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.data-container {
+    margin-top: 20px;
+}
+
+.form-container {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.ui-panel {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    /*border: 1px solid #548bff;*/
+}
+
+.ui-panel-titlebar {
+    background-color: #548bff !important; /* Pale violet red */
+    color: white !important;
+    border-radius: 20px 20px 0 0 !important;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ui-panel-content {
+    border: transparent !important;
+}
+
+.ui-button {
+    margin-right: 5px;
+    border-radius: 20px !important;
+    transition: all 0.3s ease;
+}
+
+.ui-button:hover {
+    transform: scale(1.05);
+}
+
+.ui-button-success {
+    background-color: #ff8ac1 !important;
+    border-color: #ff8ac1 !important;
+}
+
+.ui-button-secondary {
+    background-color: #dda0dd !important; /* Plum */
+    border-color: #dda0dd !important;
+}
+
+.ui-datatable {
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ui-datatable-header {
+    text-align: left;
+    background-color: #ffd1dc !important; /* Light pink */
+    color: #333 !important;
+}
+
+.ui-datatable .ui-datatable-data tr {
+    background-color: #fff9fb; /* Very light pink */
+}
+
+.ui-datatable .ui-datatable-data tr:nth-child(even) {
+    background-color: #fff0f5; /* Lavender blush */
+}
+
+.ui-inputfield {
+    width: 100%;
+    border-radius: 20px !important;
+    border: 1px solid rgb(130, 180, 230) !important;
+}
+
+.ui-inputfield:focus {
+    box-shadow: 0 0 5px rgba(100, 160, 255, 0.5) !important;
+    border-color: rgb(100, 160, 255) !important;
+}
+
+.ui-message {
+    margin-top: 5px;
+}
+
+.ui-toolbar {
+    background-color: #ffe8ee !important;
+    border: none !important;
+    border-radius: 20px !important;
+    margin-bottom: 15px;
+}
+
+.ui-dialog {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(219, 112, 147, 0.3) !important;
+}
+
+.ui-dialog-titlebar {
+    background-color: #db7093 !important; /* Pale violet red */
+    color: white !important;
+}
+
+.datatable-action-buttons {
+    gap: 10px;
+    display: flex;
+    justify-content: center
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+    }
+
+    .card {
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    .ui-panelgrid-cell {
+        display: block;
+        width: 100%;
+    }
+}

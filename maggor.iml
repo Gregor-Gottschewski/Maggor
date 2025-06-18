@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/data" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.galleon/hashes/.installation" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.galleon/hashes/.well-known" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.galleon/hashes/domain/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.galleon/hashes/standalone/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.galleon/hashes/standalone/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/.well-known" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/domain/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/configuration/standalone_xml_history/snapshot" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/data/content" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/data/timer-service-data" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/data/tx-object-store" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/docker/wildfly-35.0.1/standalone/tmp" />
+    </content>
+  </component>
+</module>
