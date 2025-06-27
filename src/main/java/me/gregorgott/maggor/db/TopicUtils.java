@@ -12,6 +12,7 @@ public class TopicUtils {
     public static void addTopic(TopicObject topic, MongoClient mongoClient) {
         mongoClient.getDatabase("maggor").getCollection("topics").insertOne(
                 new Document("topic", topic.getName())
+                        .append("password", topic.getPassword())
         );
     }
 
@@ -23,7 +24,7 @@ public class TopicUtils {
                 .find()
                 .into(new ArrayList<>())
                 .forEach(topic -> topics.add(new TopicObject(topic.getString("topic"),
-                        topic.getObjectId("_id").toHexString())
+                        topic.getObjectId("_id").toHexString(), topic.getString("password"))
                 ));
 
         return topics;
@@ -44,7 +45,5 @@ public class TopicUtils {
     public static void deleteTopic(String topicName, String user, MongoClient mongoClient) throws TopicNotFoundException {
         mongoClient.getDatabase("maggor").getCollection("topics")
                 .deleteOne(new Document("topic", topicName).append("user", user));
-        mongoClient.getDatabase("maggor").getCollection("users")
-                .updateOne(new Document("username", user), new Document("$pull", new Document("stories", new Document("topic", topicName))));
     }
 }

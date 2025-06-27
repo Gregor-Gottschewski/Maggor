@@ -12,16 +12,20 @@ public class TopicObject {
     @JsonbProperty("id")
     private String id;
 
+    @JsonbProperty("password")
+    private String password;
+
     public TopicObject() {
     }
 
-    public TopicObject(String name) {
-        this(name, null);
+    public TopicObject(String name, String id) {
+        this(name, id, null);
     }
 
-    public TopicObject(String name, String id) {
+    public TopicObject(String name, String id, String password) {
         this.name = name;
         this.id = id;
+        this.password = password;
     }
 
     public String getName() {
@@ -38,5 +42,13 @@ public class TopicObject {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
