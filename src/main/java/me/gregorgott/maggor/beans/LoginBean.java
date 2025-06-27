@@ -36,7 +36,7 @@ public class LoginBean implements Serializable {
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nutzername oder Passwort falsch", "Bitter erneut probieren")
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Geheimschlüssel ist falsch", "Probiere es nochmal :)")
             );
             return null;
         }
