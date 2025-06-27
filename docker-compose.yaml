@@ -1,0 +1,30 @@
+services:
+  maggor:
+    build: .
+    container_name: maggor
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./conf:/maggor
+    environment:
+      - DB_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - DB_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - DB_PORT=27017
+      - DB_NAME=mongo
+    networks:
+      - external
+      - internal
+  database:
+    image: mongo
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+    volumes:
+      - ./data/mongo:/data/db
+    networks:
+      - internal
+networks:
+  external:
+  internal:

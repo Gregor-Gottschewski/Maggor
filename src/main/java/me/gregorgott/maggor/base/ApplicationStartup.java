@@ -21,6 +21,7 @@ public class ApplicationStartup implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        logger.log(Level.INFO, "Visit http://localhost:8080{0}", sce.getServletContext().getContextPath());
         init();
     }
 

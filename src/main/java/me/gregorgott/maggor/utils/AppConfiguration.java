@@ -31,11 +31,11 @@ public class AppConfiguration {
     }
 
     public String getDbName() {
-        return properties.getProperty("db.name");
+        return System.getenv("DB_NAME");
     }
 
     public String getDbPort() {
-        return properties.getProperty("db.port");
+        return System.getenv("DB_PORT");
     }
 
     public String getFooter() {
@@ -59,10 +59,10 @@ public class AppConfiguration {
     }
 
     public String getDatabaseRootUser() {
-        return properties.getProperty("db.root.username");
+        return System.getenv("DB_USERNAME");
     }
 
     public char[] getDatabaseRootPassword() {
-        return properties.getProperty("db.root.password").toCharArray();
+        return System.getenv("DB_PASSWORD").toCharArray();
     }
 }

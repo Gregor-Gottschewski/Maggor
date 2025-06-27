@@ -1,0 +1,6 @@
+user.password=<secure_user_password>
+
+# UI
+login.title=Here is the title
+login.subtitle=Here is your subtitle
+login.footer=Here is your footer
