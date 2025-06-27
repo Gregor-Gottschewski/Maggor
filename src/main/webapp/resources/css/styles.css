@@ -199,10 +199,7 @@ h1 {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
         padding: 0;
-        background-color: white;
     }
 
     .card {
@@ -210,8 +207,12 @@ h1 {
         border-radius: 0;
     }
 
-    .ui-panelgrid-cell {
-        display: block;
+    .ui-button {
         width: 100%;
+        margin: 5px 0 !important;
+    }
+
+    .col-hide-mobile {
+        display: none !important;
     }
 }
