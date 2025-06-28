@@ -1,6 +1,7 @@
 package me.gregorgott.maggor.db;
 
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.model.Filters;
 import me.gregorgott.maggor.TopicNotFoundException;
 import me.gregorgott.maggor.api.json.TopicObject;
 import org.bson.Document;
@@ -45,5 +46,7 @@ public class TopicUtils {
     public static void deleteTopic(String topicName, String user, MongoClient mongoClient) throws TopicNotFoundException {
         mongoClient.getDatabase("maggor").getCollection("topics")
                 .deleteOne(new Document("topic", topicName).append("user", user));
+        mongoClient.getDatabase("maggor").getCollection("stories")
+                .deleteMany(Filters.eq("topic", topicName));
     }
 }
