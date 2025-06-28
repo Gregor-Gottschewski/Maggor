@@ -5,22 +5,28 @@
 ## Installation with Docker
 
 Maggor is perfectly optimized to work with Docker.
-If you haven't Docker installed, follow the Docker installation steps for your operating system.
+An installation without docker is possible but not recommended.
 
-Afterward, clone this repository and edit the configuration file `/conf/conf.prop` for your needs.
-See the chapter [configuration file](#configuration-file) for more information.
-Run `docker-compose up` in the projects directory.
-Visit `http://<your_ip or localhost>:8080/maggor-0.0.1/login.xhtml`.
+1. If you haven't Docker installed, [follow the Docker installation steps](https://docs.docker.com/engine/install/) for
+   your operating system.
+2. Clone this repository with `git clone https://github.com/Gregor-Gottschewski/Maggor.git` and edit the configuration
+   file `/conf/conf.prop` for your needs. See the chapter [configuration file](#configuration-file) for more
+   information.
+3. Change the database password stored in `.env` before running Maggor. This password is used to initialize the MongoDB
+   database for the first time.
+4. Run `docker-compose up` in the project's directory.
+5. Visit `http://<your_ip or localhost>:8080/login.xhtml`.
 
 ## Configuration file
 
-Create a configuration file named `conf.prop` in Maggor's application directory.
-It has to contain the following configurations:
+The configuration file in `config` has to contain the following configurations:
 
 `user.password`: Password of the application user  
 `login.title`: Title shown on the login page  
 `login.subtitle`: Subtitle shown on the login page  
 `login.footer`: Footer on the login page
+
+If the values aren't set, default values are used.
 
 ### Example file
 
@@ -35,6 +41,7 @@ login.footer=This is the footer
 ## Environment-Variables
 
 Change the environment variables in `.env` to your needs.
+The only configuration that *has to be changed* is `DB_PASSWORD`.
 
 | Environment Variable         | Description                              | Used In  | Default / Value |
 |------------------------------|------------------------------------------|----------|-----------------|

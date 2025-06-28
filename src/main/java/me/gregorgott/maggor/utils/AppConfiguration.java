@@ -39,11 +39,11 @@ public class AppConfiguration {
     }
 
     public String getFooter() {
-        return properties.getProperty("login.footer");
+        return properties.getProperty("login.footer", "");
     }
 
     public String getPassword() {
-        return properties.getProperty("user.password");
+        return properties.getProperty("user.password", "maggor");
     }
 
     public void setPassword(String password) {
@@ -51,11 +51,11 @@ public class AppConfiguration {
     }
 
     public String getLoginTitle() {
-        return properties.getProperty("login.title");
+        return properties.getProperty("login.title", "Welcome to Maggor");
     }
 
     public String getLoginSubtitle() {
-        return properties.getProperty("login.subtitle");
+        return properties.getProperty("login.subtitle", "Share beautiful moments");
     }
 
     public String getDatabaseRootUser() {
