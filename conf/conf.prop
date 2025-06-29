@@ -1,6 +1,30 @@
 user.password=<secure_user_password>
 
-# UI
+# ---------- UI ---------- #
+# ----- Login ----- #
 login.title=Here is the title
 login.subtitle=Here is your subtitle
 login.footer=Here is your footer
+# ----- Topics ----- #
+topics.title=Chapters
+topics.header=Chapters
+topics.underline=The most beautiful chapters with you
+topics.toolbar.text=For you
+topics.toolbar.logout=Goodbye
+topics.table.emptymessage=Little bit empty here
+topics.table.column.chapters.name=Chapters
+topics.table.column.actions.name=Actions
+topics.table.column.actions.view=view chapter
+topics.table.column.actions.delete=delete chapter
+topics.create.title=Creating a new chapter
+topics.create.name=Chapter name
+topics.create.name.requiredmessage=Please give a name
+topics.create.name.placeholder=our chapter
+topics.create.password=Password
+topics.create.password.placeholder=your password
+topics.create.button=Create chapter
+topics.protection.header=Secret Chapter
+topics.protection.password=Password
+topics.protection.requiredmessage=Please give a password
+topics.protection.placeholder=your password...
+topics.protection.openbutton=Open chapter

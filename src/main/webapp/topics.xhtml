@@ -10,7 +10,7 @@
     </f:metadata>
 
     <h:head>
-        <title>Maggor - Kapitel</title>
+        <title>Maggor - #{staticValuesBean.topicsTitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="styles.css"/>
     </h:head>
@@ -18,18 +18,19 @@
     <h:body>
         <div class="card">
             <div style="text-align: center; margin-bottom: 20px;">
-                <h1>Unsere Kapitel</h1>
-                <p class="underline">Hoffentlich werden es noch viele mehr</p>
+                <h1>#{staticValuesBean.topicsHeader}</h1>
+                <p class="underline">#{staticValuesBean.topicsUnderline}</p>
             </div>
 
             <h:form>
                 <p:toolbar>
                     <p:toolbarGroup>
-                        <p:outputLabel value="Für dich, Maggie ❤️" styleClass="mr-3"
+                        <p:outputLabel value="#{staticValuesBean.topicsToolbarText}" styleClass="mr-3"
                                        style="font-weight: bold; color: #db7093;"/>
                     </p:toolbarGroup>
                     <p:toolbarGroup align="right">
-                        <p:commandButton value="Abmelden" action="#{loginBean.logout}" icon="pi pi-sign-out"/>
+                        <p:commandButton value="#{staticValuesBean.topicsToolbarLogout}" action="#{loginBean.logout}"
+                                         icon="pi pi-sign-out"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -43,18 +44,21 @@
                     <div class="p-col-12 p-md-8">
                         <h:form id="topicsTableForm">
                             <p:dataTable id="topicsTable" var="topic" value="#{topicsBean.topics}"
-                                         emptyMessage="Noch kein Kapitel vorhanden. Lass uns das ändern (^^)">
-                                <p:column headerText="Kapitel">
+                                         emptyMessage="#{staticValuesBean.topicsTableEmptyMessage}">
+                                <p:column headerText="#{staticValuesBean.topicsTableColumnChaptersName}">
                                     <h:outputText value="#{topic.name}" style="font-weight: bold;"/>
                                 </p:column>
-                                <p:column headerText="Aktionen" style="width:150px;text-align:center">
+                                <p:column headerText="#{staticValuesBean.topicsTableColumnActionsName}"
+                                          style="width:150px;text-align:center">
                                     <div class="datatable-action-buttons">
-                                        <p:commandButton icon="pi pi-eye" title="Kapitel genauer anschauen"
+                                        <p:commandButton icon="pi pi-eye"
+                                                         title="#{staticValuesBean.topicsTableColumnActionsView}"
                                                          action="#{topicsBean.viewStories(topic)}"
                                                          styleClass="ui-button-success"
                                                          id="viewStoriesButton"
                                                          update="messages"/>
-                                        <p:commandButton icon="pi pi-trash" title="Kapitel löschen"
+                                        <p:commandButton icon="pi pi-trash"
+                                                         title="#{staticValuesBean.topicsTableColumnActionsDelete}"
                                                          action="#{topicsBean.deleteTopic(topic)}"
                                                          styleClass="ui-button-danger"
                                                          update=":topicsTableForm messages"
@@ -67,18 +71,20 @@
 
                     <div class="p-col-12 p-md-4">
                         <h:form id="topicCreationForm">
-                            <p:panel header="Ein neues Kapitel erstellen">
+                            <p:panel header="#{staticValuesBean.topicsCreateTitle}">
                                 <p:panelGrid columns="2" cellpadding="5">
-                                    <p:outputLabel for="topicName" value="Kapitelname:"/>
+                                    <p:outputLabel for="topicName" value="#{staticValuesBean.topicsCreateName}:"/>
                                     <p:inputText id="topicName" value="#{topicsBean.newTopicName}" required="true"
-                                                 requiredMessage="Bitte Kapitelnamen vergeben"
-                                                 placeholder="Unser Kapitel"/>
+                                                 requiredMessage="#{staticValuesBean.topicsCreateNameRequiredMessage}"
+                                                 placeholder="#{staticValuesBean.topicsCreateNamePlaceholder}"/>
 
-                                    <p:outputLabel for="topicpasswordField" value="Passwort:"/>
+                                    <p:outputLabel for="topicpasswordField"
+                                                   value="#{staticValuesBean.topicsCreatePassword}:"/>
                                     <p:password id="topicpasswordField" value="#{topicsBean.newTopicPassword}"
-                                                placeholder="Mein Passwort"/>
+                                                placeholder="#{staticValuesBean.topicsCreatePasswordPlaceholder}"/>
 
-                                    <p:commandButton value="Kapitel erstellen" action="#{topicsBean.createTopic}"
+                                    <p:commandButton value="#{staticValuesBean.topicsCreateButton}"
+                                                     action="#{topicsBean.createTopic}"
                                                      update=":topicsTableForm :topicCreationForm messages"
                                                      icon="pi pi-plus" id="createTopicButton"/>
                                 </p:panelGrid>
@@ -87,14 +93,18 @@
                     </div>
                 </div>
 
-                <p:dialog header="Geschütztes Kapitel" widgetVar="password-topic-dialog" showEffect="fade"
+                <p:dialog header="#{staticValuesBean.topicsProtectionHeader}" widgetVar="password-topic-dialog"
+                          showEffect="fade"
                           closeOnEscape="true" responsive="true" draggable="false">
                     <h:form id="password-topic-dialog-form">
-                        <p:outputLabel for="password-topic-dialog-password-field" value="Passwort:"/>
+                        <p:outputLabel for="password-topic-dialog-password-field"
+                                       value="#{staticValuesBean.topicsProtectionPassword}:"/>
                         <p:password id="password-topic-dialog-password-field" value="#{topicsBean.topicPassword}"
-                                    required="true" requiredMessage="Bitte das Passwort eingeben"
-                                    placeholder="Dein Passwort..."/>
-                        <p:commandButton value="Kapitel öffnen" action="#{topicsBean.viewSecretStories}"
+                                    required="true"
+                                    requiredMessage="#{staticValuesBean.topicsProtectionRequiredMessage}"
+                                    placeholder="#{staticValuesBean.topicsProtectionPlaceholder}"/>
+                        <p:commandButton value="#{staticValuesBean.topicsProtectionOpenButton}"
+                                         action="#{topicsBean.viewSecretStories}"
                                          update=":messages" icon="pi pi-lock-open"
                                          id="password-topic-dialog-button"/>
                     </h:form>
