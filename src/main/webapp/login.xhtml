@@ -25,7 +25,7 @@
                     </p:messages>
 
                     <h:panelGrid columns="2" cellpadding="5" styleClass="login-grid">
-                        <p:outputLabel for="password" value="Geheimschlüssel:"/>
+                        <p:outputLabel for="password" value="Geheimschlüssel:" indicateRequired="false"/>
                         <p:password id="password" value="#{loginBean.password}" required="true"
                                     requiredMessage="Bitte gebe dein Geheimschlüssel ein"
                                     feedback="false" placeholder="Geheimschlüssel"/>

@@ -50,15 +50,15 @@
                                     <p:column headerText="Titel" sortBy="#{story.title}" filterBy="#{story.title}">
                                         <h:outputText value="#{story.title}" style="font-weight: bold;"/>
                                     </p:column>
-                                    <p:column headerText="Beschreibung" styleClass="col-hide-mobile">
+                                    <p:column headerText="Beschreibung" responsivePriority="3">
                                         <h:outputText value="#{story.body}" style="color: #555;"/>
                                     </p:column>
                                     <p:column headerText="Datum" sortBy="#{story.date}" width="180px"
-                                              styleClass="col-hide-mobile">
+                                              responsivePriority="4">
                                         <h:outputText value="#{story.date}" style="color: #555;"/>
                                     </p:column>
                                     <p:column headerText="Rating" sortBy="#{story.rating}" width="180px"
-                                              styleClass="col-hide-mobile">
+                                              responsivePriority="5">
                                         <p:rating readonly="true" value="#{story.rating}"/>
                                     </p:column>
                                     <p:column headerText="Aktionen" style="width:120px;text-align:center">
@@ -109,30 +109,50 @@
                     <div class="p-col-12 p-md-4">
                         <h:form id="storyCreationForm">
                             <p:panel header="Einen neuen Moment erschaffen" styleClass="mt-3 story-creation-panel">
-                                <p:panelGrid columns="2" cellpadding="5" styleClass="responsive-grid">
-                                    <p:outputLabel for="storyTitle" value="Titel:"/>
-                                    <p:inputText id="storyTitle" value="#{storiesBean.newStory.title}" required="true"
-                                                 requiredMessage="Bitte gebe dem Moment einen einzigartigen Titel"
-                                                 placeholder="Name des Moments"/>
+                                <p:panelGrid columns="2" cellpadding="5" styleClass="responsive-grid" layout="flex"
+                                             columnClasses="col-12 md:col-3 xl:col-2, col-12 md:col-9 xl:col-4, col-12 md:col-3 xl:col-2, col-12 md:col-9 xl:col-4">
+                                    <p:row>
+                                        <p:outputLabel for="storyTitle" value="Titel:" indicateRequired="false"/>
+                                        <p:inputText id="storyTitle" value="#{storiesBean.newStory.title}"
+                                                     required="true"
+                                                     requiredMessage="Bitte gebe dem Moment einen einzigartigen Titel"
+                                                     placeholder="Name des Moments"/>
+                                    </p:row>
 
-                                    <p:outputLabel for="storyBody" value="Beschreibung:"/>
-                                    <p:inputTextarea id="storyBody" value="#{storiesBean.newStory.body}" required="true"
-                                                     requiredMessage="Bitte beschreibe diesen Moment" rows="5"
-                                                     placeholder="Beschreibe diesen Moment..."/>
+                                    <p:row>
+                                        <p:outputLabel for="storyBody" value="Beschreibung:" indicateRequired="false"/>
+                                        <p:inputTextarea id="storyBody" value="#{storiesBean.newStory.body}"
+                                                         required="true"
+                                                         requiredMessage="Bitte beschreibe diesen Moment" rows="5"
+                                                         placeholder="Beschreibe diesen Moment..."/>
+                                    </p:row>
 
-                                    <p:outputLabel for="storyCreationStoryDate" value="Datum:"/>
-                                    <p:datePicker id="storyCreationStoryDate"
-                                                  value="#{storiesBean.newStory.date}" required="true"
-                                                  requiredMessage="Bitte setze das Datum des Moments"
-                                                  placeholder="Wann war der Moment?" locale="de" monthNavigator="true"
-                                                  pattern="dd.MM.yyyy" inline="true"/>
+                                    <p:row>
+                                        <p:outputLabel for="storyCreationStoryDate" value="Datum:"
+                                                       indicateRequired="false"/>
+                                    </p:row>
 
-                                    <p:outputLabel for="storyCreationStoryRating" value="Rating:"/>
-                                    <p:rating id="storyCreationStoryRating"
-                                              value="#{storiesBean.newStory.rating}"/>
+                                    <p:row>
+                                        <p:datePicker id="storyCreationStoryDate"
+                                                      value="#{storiesBean.newStory.date}" required="true"
+                                                      requiredMessage="Bitte setze das Datum des Moments"
+                                                      placeholder="Wann war der Moment?" locale="de"
+                                                      monthNavigator="true"
+                                                      pattern="dd.MM.yyyy" inline="true"/>
+                                    </p:row>
 
-                                    <p:commandButton value="Moment speichern" action="#{storiesBean.createStory}"
-                                                     update=":storiesTableForm :storyCreationForm" icon="pi pi-heart"/>
+                                    <p:row>
+                                        <p:outputLabel for="storyCreationStoryRating" value="Rating:"/>
+                                        <p:rating id="storyCreationStoryRating"
+                                                  value="#{storiesBean.newStory.rating}"/>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:commandButton value="Moment speichern" action="#{storiesBean.createStory}"
+                                                         update=":storiesTableForm :storyCreationForm"
+                                                         icon="pi pi-heart"/>
+
+                                    </p:row>
                                 </p:panelGrid>
                             </p:panel>
                         </h:form>

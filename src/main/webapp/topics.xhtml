@@ -45,7 +45,10 @@
                             <p:dataTable id="topicsTable" var="topic" value="#{topicsBean.topics}"
                                          emptyMessage="Noch kein Kapitel vorhanden. Lass uns das ändern (^^)">
                                 <p:column headerText="Kapitel">
-                                    <h:outputText value="#{topic.name}" style="font-weight: bold;"/>
+                                    <div class="chapter-entry">
+                                        <i class="pi pi-book" style="margin-right:8px; color:#c99;"/>
+                                        <h:outputText value="#{topic.name}" styleClass="chapter-title"/>
+                                    </div>
                                 </p:column>
                                 <p:column headerText="Aktionen" style="width:150px;text-align:center">
                                     <div class="datatable-action-buttons">
@@ -67,35 +70,49 @@
 
                     <div class="p-col-12 p-md-4">
                         <h:form id="topicCreationForm">
-                            <p:panel header="Ein neues Kapitel erstellen">
-                                <p:panelGrid columns="2" cellpadding="5">
-                                    <p:outputLabel for="topicName" value="Kapitelname:"/>
-                                    <p:inputText id="topicName" value="#{topicsBean.newTopicName}" required="true"
-                                                 requiredMessage="Bitte Kapitelnamen vergeben"
-                                                 placeholder="Unser Kapitel"/>
+                            <p:panel header="Ein neues Kapitel erstellen" styleClass="mt-3">
+                                <p:panelGrid columns="2" cellpadding="5" styleClass="responsive-grid" layout="flex">
+                                    <p:row>
+                                        <p:outputLabel for="topicName" value="Kapitelname:" indicateRequired="false"/>
+                                        <p:inputText id="topicName" value="#{topicsBean.newTopicName}" required="true"
+                                                     requiredMessage="Bitte Kapitelnamen vergeben"
+                                                     placeholder="Unser Kapitel"/>
+                                    </p:row>
 
-                                    <p:outputLabel for="topicpasswordField" value="Passwort:"/>
-                                    <p:password id="topicpasswordField" value="#{topicsBean.newTopicPassword}"
-                                                placeholder="Mein Passwort"/>
+                                    <p:row>
+                                        <p:outputLabel for="topicpasswordField" value="Passwort:"/>
+                                        <p:password id="topicpasswordField" value="#{topicsBean.newTopicPassword}"
+                                                    placeholder="Mein Passwort"/>
+                                    </p:row>
 
-                                    <p:commandButton value="Kapitel erstellen" action="#{topicsBean.createTopic}"
-                                                     update=":topicsTableForm :topicCreationForm messages"
-                                                     icon="pi pi-plus" id="createTopicButton"/>
+                                    <p:row>
+                                        <p:commandButton value="Kapitel erstellen"
+                                                         action="#{topicsBean.createTopic}"
+                                                         update=":topicsTableForm :topicCreationForm messages"
+                                                         icon="pi pi-plus" id="createTopicButton"/>
+                                    </p:row>
                                 </p:panelGrid>
                             </p:panel>
                         </h:form>
                     </div>
                 </div>
 
-                <p:dialog header="Geschütztes Kapitel" widgetVar="password-topic-dialog" showEffect="fade"
-                          closeOnEscape="true" responsive="true" draggable="false">
-                    <h:form id="password-topic-dialog-form">
-                        <p:outputLabel for="password-topic-dialog-password-field" value="Passwort:"/>
+                <p:dialog header="Geschütztes Kapitel" id="password-dialog" widgetVar="password-topic-dialog"
+                          showEffect="fade" closeOnEscape="true" responsive="true" draggable="false"
+                          modal="true" styleClass="password-dialog">
+
+                    <h:form id="password-topic-dialog-form" styleClass="password-dialog-form">
+                        <p:outputLabel for="password-topic-dialog-password-field" value="Passwort:"
+                                       styleClass="password-label"/>
+
                         <p:password id="password-topic-dialog-password-field" value="#{topicsBean.topicPassword}"
                                     required="true" requiredMessage="Bitte das Passwort eingeben"
-                                    placeholder="Dein Passwort..."/>
-                        <p:commandButton value="Kapitel öffnen" action="#{topicsBean.viewSecretStories}"
-                                         update=":messages" icon="pi pi-lock-open"
+                                    placeholder="Dein Passwort..." styleClass="password-input"/>
+
+                        <p:commandButton value="Kapitel öffnen"
+                                         action="#{topicsBean.viewSecretStories}"
+                                         update=":messages"
+                                         icon="pi pi-lock-open"
                                          id="password-topic-dialog-button"/>
                     </h:form>
                 </p:dialog>
